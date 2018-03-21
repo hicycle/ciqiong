@@ -25,18 +25,18 @@ class DevelopmentConfig(Config):
     MAIL_USER = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     SQLAICHEMY_DATABASE_URI = os.environ.get(
-        'DEV_DATABASE_URI') or 'mysql://root:root@localhost/ciqiongDev'
+        'DEV_DATABASE_URI') or 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
 
 class TestConfig(Config):
     TESTING = True
     SQLAICHEMY_DATABASE_URI = os.environ.get(
-        'DEV_DATABASE_URI') or 'mysql://root:root@localhost/ciqiongTest'
+        'DEV_DATABASE_URI') or 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
 
 
 class ProductionConfig(Config):
     SQLAICHEMY_DATABASE_URI = os.environ.get(
-        'DEV_DATABASE_URI') or 'mysql://root:root@localhost/ciqiong'
+        'DEV_DATABASE_URI') or 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 
 
 config = {
